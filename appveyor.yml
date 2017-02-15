@@ -15,4 +15,4 @@ build:
   verbosity: normal
 artifacts:
 - path: ClashofClansPatcher/bin/Debug
-  name: ClashofClansPatcher
+  name: coc_patcher_latest
