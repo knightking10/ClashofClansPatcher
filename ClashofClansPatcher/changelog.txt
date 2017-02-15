@@ -1,0 +1,20 @@
+﻿v1.4
+-IP Editor is back with no bug!
+-Add new versions
+v1.3
+-Add clash of clans 8.551.24 patch option
+-Remove IP editor(doesn't work)
+-Remove 3rd party design(now use classic windows design)
+-Modify some message pop up.
+v1.2
+-Added all clash of clans 8xx patcher
+-New developer patch mode
+- IP editor makes your libg.so messed up.It will be removed in the next build
+Known bug:
+-The IP Editor still there but it doesn't work so please don't use it
+v1.1
+-Add a new feature : Libg.so patcher for clash of clans 8.332.16: make your own patched apk
+v1.0
+-First release
+-IP editor beta
+Images : http://i.imgur.com/s2bwyPM.jpg and http://i.imgur.com/BnFnzkI.jpg

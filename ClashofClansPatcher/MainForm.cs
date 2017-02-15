@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ClashofClansPatcher
@@ -13,6 +14,7 @@ namespace ClashofClansPatcher
         private void MainForm_Load(object sender, EventArgs e)
         {
             txtKey.Text = Keys.GetKey(comboVersion.Text);
+            txtChangelog.Text = LoadChangelog();
         }
 
         private void comboVersion_SelectedIndexChanged(object sender, EventArgs e)
@@ -181,6 +183,10 @@ namespace ClashofClansPatcher
                 }
                 
             }
+        }
+        private static string LoadChangelog()
+        {
+            return File.ReadAllText("changelog.txt");
         }
     }
 }
