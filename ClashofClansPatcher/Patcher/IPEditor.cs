@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClashofClansPatcher
@@ -14,7 +12,7 @@ namespace ClashofClansPatcher
         {
             byte[] searchbyte = GetBytes(oldhostname);
             byte[] filebyte = File.ReadAllBytes(path);
-            IEnumerable<int> positions = FindPattern(filebyte, searchbyte);
+            IEnumerable<int> positions = filebyte.FindPattern(searchbyte);
             if (positions.Count() == 0)
             {
                 MessageBox.Show("We weren't able to find the ip.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -30,13 +28,7 @@ namespace ClashofClansPatcher
             }
           
         }
-        public static IEnumerable<int> FindPattern(byte[] fileBytes, byte[] searchPattern)
-        {
-            if ((searchPattern != null) && (fileBytes.Length >= searchPattern.Length))
-                for (int i = 0; i < fileBytes.Length - searchPattern.Length + 1; i++)
-                    if (!searchPattern.Where((data, index) => !fileBytes[i + index].Equals(data)).Any())
-                        yield return i;
-        }
+        
         static byte[] GetBytes(string ip)
         {
             return Encoding.UTF8.GetBytes(ip);

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClashofClansPatcher
@@ -28,9 +25,9 @@ namespace ClashofClansPatcher
             else if (offsettxt == null)
                 MessageBox.Show("offset textbox cannot be nulled", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             byte[] fileBytes = File.ReadAllBytes(filename);
-            byte[] searchPattern = HexToByteArray(key);
-            byte[] replacePattern = HexToByteArray("72f1a4a4c48e44da0c42310f800e96624e6dc6a641a9d41c3b5039d8dfadc27e");
-            IEnumerable<int> positions = FindPattern(fileBytes, searchPattern);
+            byte[] searchPattern = key.ToByteArray();
+            byte[] replacePattern = "72f1a4a4c48e44da0c42310f800e96624e6dc6a641a9d41c3b5039d8dfadc27e".ToByteArray();
+            IEnumerable<int> positions = fileBytes.FindPattern(searchPattern);
             if (positions.Count() == 0)
             {
                 MessageBox.Show("Patched failed \nDetail : Key wasn't found in file.Make sure you chose right version.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -48,19 +45,6 @@ namespace ClashofClansPatcher
             }
 
         }
-        public static byte[] HexToByteArray(string hex)
-        {
-            return Enumerable.Range(0, hex.Length)
-                             .Where(x => x % 2 == 0)
-                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-                             .ToArray();
-        }
-        public static IEnumerable<int> FindPattern(byte[] fileBytes, byte[] searchPattern)
-        {
-            if ((searchPattern != null) && (fileBytes.Length >= searchPattern.Length))
-                for (int i = 0; i < fileBytes.Length - searchPattern.Length + 1; i++)
-                    if (!searchPattern.Where((data, index) => !fileBytes[i + index].Equals(data)).Any())
-                        yield return i;
-        }
+        
     }
 }

@@ -27,17 +27,12 @@ namespace ClashofClansPatcher
                 if(ofd.ShowDialog() == DialogResult.OK)
                 {
                     txtPath.Text = ofd.FileName;
-                    if (ofd.SafeFileName == "Clash of Clans")
-                    {
-                    }
-                    else if (ofd.SafeFileName == "libg.so")
-                    {
-                    }
-                    else
+                    if (ofd.SafeFileName != "Clash of Clans" || ofd.SafeFileName != "libg.so")
                     {
                         MessageBox.Show("This is not a file to patch", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtPath.Text = "";
                     }
+                   
                 }
             }
         }
@@ -66,13 +61,7 @@ namespace ClashofClansPatcher
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     dev_filename.Text = ofd.FileName;
-                    if (ofd.SafeFileName == "Clash of Clans")
-                    {
-                    }//weird,why did i add this??????????
-                    else if (ofd.SafeFileName == "libg.so")
-                    {
-                    }
-                    else
+                    if (ofd.SafeFileName != "Clash of Clans" || ofd.SafeFileName != "libg.so")
                     {
                         MessageBox.Show("This is not a file to patch", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         dev_filename.Text = "";
@@ -122,19 +111,12 @@ namespace ClashofClansPatcher
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     pathtxt.Text = ofd.FileName;
-                    if (ofd.SafeFileName == "Clash of Clans")
+                    if (ofd.SafeFileName != "Clash of Clans" || ofd.SafeFileName != "libg.so")
                     {
-                       // checkBox1.Text = "Use default hostname( game.clashofclans.com)";
-                    }
-                    else if (ofd.SafeFileName == "libg.so")
-                    {
-                        //checkBox1.Text = "Use default hostname( game.clashofclans.com)";
-                    }
-                    else
-                    {
-                        MessageBox.Show("This is not a file to edit", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("This is not a file to patch", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         pathtxt.Text = "";
                     }
+                   
                 }
             }
         }
@@ -143,12 +125,12 @@ namespace ClashofClansPatcher
         {
             if (pathtxt.Text.EndsWith("Clash of Clans"))
             {
-                checkBox1.Text = "Use default hostname( game.clashofclans.com)";
+                checkBox1.Text = "Use default hostname (game.clashofclans.com)";
                 
             }
             else if (pathtxt.Text.EndsWith("libg.so"))
             {
-                checkBox1.Text = "Use default hostname( gamea.clashofclans.com)";
+                checkBox1.Text = "Use default hostname (gamea.clashofclans.com)";
             }
             checkBox1_CheckedChanged(this, new EventArgs());
         }
@@ -157,13 +139,13 @@ namespace ClashofClansPatcher
         {
             try
             {
-                if(pathtxt.Text != null && oldhosttxt.Text!=null&&newhost.Text!=null)
+                if(pathtxt.Text != null && oldhosttxt.Text!=null &&newhost.Text!=null)
                 {
                     if(pathtxt.Text.EndsWith("libg.so"))
                     {
                         if(newhost.Text.Length != 22)
                         {
-                            MessageBox.Show("Ip must be 22 characters.Your ip was " + newhost.Text.Length + " characters", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"Ip must be 22 characters.Your ip was {newhost.Text.Length} characters", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
@@ -174,7 +156,7 @@ namespace ClashofClansPatcher
                     {
                         if (newhost.Text.Length != 21)
                         {
-                            MessageBox.Show("Ip must be 21 characters.Your ip was " + newhost.Text.Length + " characters", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"Ip must be 21 characters.Your ip was {newhost.Text.Length} characters", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
