@@ -8,7 +8,8 @@ install:
 - cmd: git submodule update --init --recursive
 nuget:
   disable_publish_on_pr: true
-
+before_build:
+- cmd: appveyor-retry nuget restore
 build:
   project: ClashofClansPatcher.sln
   parallel: true
