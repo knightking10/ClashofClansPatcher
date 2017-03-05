@@ -9,7 +9,7 @@ namespace ClashofClansPatcher
 {
     public class Keys
     {
-        private static string KeyURl = ConfigurationManager.AppSettings["keysrcurl"];
+        private static string KeyURl = ConfigurationManager.AppSettings["keysrc"];
         private static string DataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\\CoCPatcher";
         private static string DataFile  = Path.Combine(DataFolder, "keys.json");
         
@@ -20,8 +20,9 @@ namespace ClashofClansPatcher
         /// <returns>The key we found</returns>
         public static string GetKey(string version)
         {
+            string key = null;
             Dictionary<string,string> dic = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText(DataFile));
-            dic.TryGetValue(version, out string key);
+            dic.TryGetValue(version, out key);
             return key;
 
         }
