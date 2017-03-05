@@ -13,15 +13,30 @@ namespace ClashofClansPatcher
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            txtKey.Text = Keys.GetKey(comboVersion.Text);
-            txtChangelog.Text = LoadChangelog();
+            try
+            {
+                foreach(string version in Keys.Versions)
+                {
+                    comboVersion.Items.Add(version);
+                }
+                comboVersion.Text = Keys.Versions[0];
+                txtKey.Text = Keys.GetKey(comboVersion.Text);
+                txtChangelog.Text = LoadChangelog();
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                    MessageBox.Show(ex.InnerException.ToString());
+                MessageBox.Show(ex.ToString());
+            }
+            
         }
 
         private void comboVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtKey.Text = Keys.GetKey(comboVersion.Text);
         }
-
+        
         private void btnBrowser_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "All Files(*.*)| *.*", Multiselect = false, ValidateNames = true })
@@ -48,7 +63,7 @@ namespace ClashofClansPatcher
                     Patcher.Patch(comboVersion.Text, txtPath.Text, txtOffset);
                 }
                 else
-                    MessageBox.Show("Patched failed \nDetail : You havenn't entered filename", "Done", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Patched failed \nDetail : You haven't entered filename", "Done", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch(Exception ex)
             {
@@ -187,6 +202,7 @@ namespace ClashofClansPatcher
         private static string LoadChangelog()
         {
             return File.ReadAllText("changelog.txt");
+          
         }
     }
 }

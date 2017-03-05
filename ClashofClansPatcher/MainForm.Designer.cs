@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnPatch = new System.Windows.Forms.Button();
@@ -136,22 +137,10 @@
             // comboVersion
             // 
             this.comboVersion.FormattingEnabled = true;
-            this.comboVersion.Items.AddRange(new object[] {
-            "8.709.2",
-            "8.551.24",
-            "8.551.4",
-            "8.332.16",
-            "8.212.12",
-            "8.212.9",
-            "8.212.3",
-            "8.116.11",
-            "8.116.2",
-            "8.67.8"});
             this.comboVersion.Location = new System.Drawing.Point(81, 86);
             this.comboVersion.Name = "comboVersion";
             this.comboVersion.Size = new System.Drawing.Size(345, 21);
             this.comboVersion.TabIndex = 4;
-            this.comboVersion.Text = "8.709.2";
             this.comboVersion.SelectedIndexChanged += new System.EventHandler(this.comboVersion_SelectedIndexChanged);
             // 
             // label2
@@ -397,9 +386,10 @@
             this.ClientSize = new System.Drawing.Size(544, 335);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Clash of Clans Patcher v1.4";
+            this.Text = "Clash of Clans Patcher v1.5";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

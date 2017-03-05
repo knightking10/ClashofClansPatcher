@@ -1,4 +1,7 @@
-﻿v1.4
+﻿v1.5
+-Keys are now received from internet (my website) which is more comfortable to upgrade when new versions come, you can import your own keys in config.
+-New icon
+v1.4
 -IP Editor is back with no bug!
 -Add new versions
 v1.3

@@ -1,0 +1,4 @@
+﻿<appSettings>
+  <!--Do not change this unless you have another key source. Make sure you follow my format-->
+  <add key="keysrc" value="https://knightking10.github.io/sc_games/coc_keys.json"/>
+</appSettings>
